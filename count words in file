@@ -1,0 +1,32 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
+public class Test {
+    public static void main(String[] args) {
+
+        int wordCount = 0;
+
+        try {
+            FileReader fr = new FileReader("sample.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                if (!line.isEmpty()) {
+                    String[] words = line.split(" "); // Split by space
+                    wordCount += words.length;
+                }
+            }
+
+            br.close();
+
+            System.out.println("Total number of words: " + wordCount);
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
