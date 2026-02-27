@@ -1,0 +1,24 @@
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
+public class appendData {
+    public static void main(String[] args) {
+
+        try {
+            // true → Append mode
+            FileWriter fw = new FileWriter("sample.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.newLine();  // Move to next line
+            bw.write("New Line: Appended data added.");
+
+            bw.close();
+
+            System.out.println("Data appended successfully.");
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
