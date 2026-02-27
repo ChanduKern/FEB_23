@@ -1,0 +1,31 @@
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
+public class dataToFile {
+    public static void main(String[] args) {
+
+        try {
+            // false means overwrite mode (default behavior)
+            FileWriter fw = new FileWriter("sample.txt", false);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write("Line 1: Java is powerful");
+            bw.newLine();
+            bw.write("Line 2: Java 8 introduced streams");
+            bw.newLine();
+            bw.write("Line 3: File handling is important");
+            bw.newLine();
+            bw.write("Line 4: BufferedWriter improves performance");
+            bw.newLine();
+            bw.write("Line 5: End of file");
+
+            bw.close();  // Close the writer
+
+            System.out.println("Data written successfully.");
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
