@@ -1,0 +1,43 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter word to search: ");
+        String searchWord = sc.nextLine();
+
+        int lineNumber = 0;
+        boolean found = false;
+
+        try {
+            FileReader fr = new FileReader("sample.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                lineNumber++;
+
+                if (line.contains(searchWord)) {
+                    System.out.println("Word found at line: " + lineNumber);
+                    found = true;
+                }
+            }
+
+            br.close();
+
+            if (!found) {
+                System.out.println("Word not found in file.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        sc.close();
+    }
+}
